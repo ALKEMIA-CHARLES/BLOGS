@@ -5,7 +5,8 @@ from wtforms.validators import Required
 
 
 class AddBlog(FlaskForm):
-    comment = StringField("You seem like the type that can express themselves")
+    blogpost = StringField(
+        "You seem like the type that can express themselves")
     submit = SubmitField('Add Blog')
 
 
@@ -16,7 +17,7 @@ class DelBlog(FlaskForm):
 
 
 class CommentsForm(FlaskForm):
-    feedback = TextAreaField("Don't be shy ! This is a free space...")
+    comment = TextAreaField("Don't be shy ! This is a free space...")
     submit = SubmitField("Submit Comment")
 
 
