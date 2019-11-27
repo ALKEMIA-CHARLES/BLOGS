@@ -8,6 +8,8 @@ from .. import db, photos
 
 @main.route("/")
 def index():
+    return redirect(url_for('main.add_blog'))
+
     return render_template('home.html')
 
 
@@ -17,7 +19,6 @@ def about():
 
 
 @main.route("/add", methods=["GET", "POST"])
-@login_required
 def add_blog():
     form = AddBlog()
     if form.validate_on_submit():
@@ -34,7 +35,6 @@ def add_blog():
 
 
 @main.route("/delete", methods=["GET", "POST"])
-@login_required
 def del_blog():
     form = DelBlog()
 
@@ -48,3 +48,28 @@ def del_blog():
         return redirect(url_for('main.blogs'))
 
     return render_template('delete.html', form=form)
+
+
+@main.route('/blogs')
+def blogs_list():
+
+    blogs = Blogpost.query.all()
+    return render_template('blogs.html', blogs=blogs)
+
+
+@main.route("/comments/<int:blogpost_id>", methods=['GET', 'POST'])
+def comments(blogpost_id):
+
+    form = CommentsForm()
+
+    if form.validate_on_submit():
+        comment = form.comment.data
+
+        new_comment = Comments(comment_section=comment,
+                               user_id=current_user.id, blogpost_id=blogpost_id)
+        db.session.add(new_comment)
+        db.session.commit()
+
+    all_comments = Comments.query.filter_by(blogpost_id=blogpost_id).all()
+    title = 'blogpost'
+    return render_template("comments.html", all_comments=all_comments, title=title, form=form)

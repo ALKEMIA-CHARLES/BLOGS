@@ -8,6 +8,7 @@ class Config:
 
     SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://charles:123@localhost/blogs"
     UPLOADED_PHOTOS_DEST = "app/static/photos"
+    SECRET_KEY = "MYSECRETKEY"
 
     # email configurations
     MAIL_SERVER = "smtp.gmail.com"

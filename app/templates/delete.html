@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <p> Would you like to delete one of the Blogs ?</p>
+    <p>If so, please fill out their ID in order to remove them from the list</p>
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.id.label}} {{form.id}}
+        {{form.submit()}}
+    </form>
+</div>
+{% endblock %}

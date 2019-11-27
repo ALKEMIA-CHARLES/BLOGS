@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1>These are all the blogs who have created</h1>
+    <ul>
+        {% for blogpost in blogposts  %}
+        <li>{{blogpost.id}}. {{blogpost}} <a href="/comments/{{ blogpost.id }}">view comments/comment on pitch</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

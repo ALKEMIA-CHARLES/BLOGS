@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1> We want people who can express themselves. Show us what you got !</h1>
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.blogpost.label}}{{form.blogpost()}}
+        {{form.submit()}}
+    </form>
+</div>
+
+{% endblock %}
