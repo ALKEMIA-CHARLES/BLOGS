@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.comment.label}}
+        <div style="display: flex;">
+            {{form.comment()}}
+            {{form.submit()}}
+        </div>
+    </form>
+    {% for comment in all_comments %}
+    <li>{{comment.comment_section}}</li>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

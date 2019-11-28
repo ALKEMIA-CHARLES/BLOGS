@@ -29,7 +29,7 @@ def add_blog():
         db.session.add(new_blogpost)
         db.session.commit()
 
-        return redirect(url_for('main.blogs'))
+        return redirect(url_for('main.blogs_list'))
 
     return render_template('add.html', form=form)
 
@@ -45,7 +45,7 @@ def del_blog():
         db.session.delete(blog)
         db.session.commit()
 
-        return redirect(url_for('main.blogs'))
+        return redirect(url_for('main.blogs_list'))
 
     return render_template('delete.html', form=form)
 
@@ -53,8 +53,8 @@ def del_blog():
 @main.route('/blogs')
 def blogs_list():
 
-    blogs = Blogpost.query.all()
-    return render_template('blogs.html', blogs=blogs)
+    blogpost = Blogpost.query.all()
+    return render_template('blogs.html', blogpost=blogpost)
 
 
 @main.route("/comments/<int:blogpost_id>", methods=['GET', 'POST'])
