@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="jumbotron">
+<div class="container">
     <h1>These are all the blogs who have created</h1>
-    <ul>
-        {% for blogpost in blogpost  %}
-        <li>{{blogpost.id}}.{{blogpost}} <a href="/comments/{{ blogpost.id }}">view comments/comment on pitch</a>
-        </li>
-        {% endfor %}
-    </ul>
+    {%for blogpost in blogposts%}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1>{{blogpost.id}}.{{blogpost.blog_title}}</h1>
+            <p>{{blogpost.post_blog_section}}
+            </p>
+            <strong>{{blogpost.username}}</strong>
+            <a href="/comments/{{ blogpost.id }}">view comments/comment on Blog</a>
+        </div>
+    </div>
+    {%endfor%}
 </div>
 {% endblock %}

@@ -3,12 +3,12 @@ from . import main
 from .forms import AddBlog, DelBlog, CommentsForm
 from ..models import User, Blogpost, Comments
 from flask_login import login_required, current_user
-from .. import db, photos
+from .. import db
 
 
 @main.route("/")
 def index():
-    return redirect(url_for('main.add_blog'))
+    # return redirect(url_for('main.add_blog'))
 
     return render_template('home.html')
 
@@ -19,13 +19,15 @@ def about():
 
 
 @main.route("/add", methods=["GET", "POST"])
+@login_required
 def add_blog():
     form = AddBlog()
     if form.validate_on_submit():
-
+        title = form.title.data
         blogpost = form.blogpost.data
 
-        new_blogpost = Blogpost(post_blog_section=blogpost)
+        new_blogpost = Blogpost(
+            blog_title=title, post_blog_section=blogpost,)
         db.session.add(new_blogpost)
         db.session.commit()
 
@@ -35,6 +37,7 @@ def add_blog():
 
 
 @main.route("/delete", methods=["GET", "POST"])
+@login_required
 def del_blog():
     form = DelBlog()
 
@@ -51,10 +54,11 @@ def del_blog():
 
 
 @main.route('/blogs')
+@login_required
 def blogs_list():
 
-    blogpost = Blogpost.query.all()
-    return render_template('blogs.html', blogpost=blogpost)
+    blogposts = Blogpost.query.all()[::-1]
+    return render_template('blogs.html', blogposts=blogposts)
 
 
 @main.route("/comments/<int:blogpost_id>", methods=['GET', 'POST'])

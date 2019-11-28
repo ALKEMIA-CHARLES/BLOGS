@@ -5,9 +5,11 @@ from wtforms.validators import Required
 
 
 class AddBlog(FlaskForm):
-    blogpost = StringField(
+    title = StringField()
+    blogpost = TextAreaField(
         "You seem like the type that can express themselves")
     submit = SubmitField('Add Blog')
+    
 
 
 class DelBlog(FlaskForm):
@@ -24,3 +26,4 @@ class CommentsForm(FlaskForm):
 class DelComments(FlaskForm):
     id = IntegerField(
         "Please enter the ID number of the comment you would like to delete")
+

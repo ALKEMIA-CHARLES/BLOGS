@@ -3,10 +3,13 @@
 
 <div class="jumbotron">
     <h1> We want people who can express themselves. Show us what you got !</h1>
-    <form method="POST">
+    <form method="POST" class="form-group">
         {{form.hidden_tag()}}
-        {{form.blogpost.label}}{{form.blogpost()}}
-        {{form.submit()}}
+        {{form.title.label}}{{form.title(class = "form-control")}}
+        <br>
+        {{form.blogpost.label}}{{form.blogpost(class="form-control")}}
+        <br>
+        {{form.submit(class="btn btn-dark btn-block")}}
     </form>
 </div>
 

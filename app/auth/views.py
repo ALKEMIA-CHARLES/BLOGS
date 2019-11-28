@@ -18,10 +18,8 @@ def register():
         db.session.commit()
 
         return redirect(url_for("auth.login"))
-    title = "Sign Up to Pitches"
-    return render_template("auth/signup.html",
-                           signup_form=signup_form,
-                           title=title)
+    title = "Sign Up to Blogs"
+    return render_template("auth/signup.html",signup_form=signup_form,title=title)
 
 
 @auth.route("/login", methods=["GET", "POST"])
@@ -29,7 +27,6 @@ def login():
     login_form = LoginForm()
     user = User.query.filter_by(email=login_form.email.data).first()
     if login_form.validate_on_submit():
-        
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user, login_form.remember.data)
             return redirect(request.args.get("next") or url_for("main.index"))
