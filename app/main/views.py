@@ -9,8 +9,9 @@ from .. import db
 @main.route("/")
 def index():
     # return redirect(url_for('main.add_blog'))
+    blogposts = Blogpost.query.all()[::-1]
 
-    return render_template('home.html')
+    return render_template('home.html', blogposts=blogposts)
 
 
 @main.route("/about")
@@ -27,7 +28,7 @@ def add_blog():
         blogpost = form.blogpost.data
 
         new_blogpost = Blogpost(
-            blog_title=title, post_blog_section=blogpost,)
+            blog_title=title, post_blog_section=blogpost, user_id=current_user.id)
         db.session.add(new_blogpost)
         db.session.commit()
 
@@ -51,13 +52,15 @@ def del_blog():
         return redirect(url_for('main.blogs_list'))
 
     return render_template('delete.html', form=form)
+    # Blogpost.ob
+    # pass
 
 
 @main.route('/blogs')
 @login_required
 def blogs_list():
 
-    blogposts = Blogpost.query.all()[::-1]
+    blogposts = Blogpost.query.filter_by(user_id=current_user.id)[::-1]
     return render_template('blogs.html', blogposts=blogposts)
 
 

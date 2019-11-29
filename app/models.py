@@ -20,10 +20,12 @@ class Blogpost(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship(
         "Comments", backref="post_comments", lazy="dynamic")
+    user = db.relationship('User', backref='user', lazy=True)
 
-    def __init__(self, post_blog_section, blog_title):
+    def __init__(self, post_blog_section, blog_title, user_id):
         self.post_blog_section = post_blog_section
         self.blog_title = blog_title
+        self.user_id = user_id
 
     def __repr__(self):
         return f"There is a pretty cool blog here !:{self.post_blog_section}"
