@@ -7,14 +7,15 @@
         {% for blogpost in blogposts %}
         <div class="blog">
             <div class="blog-header">
-                <div class="blog-title">{{ blogpost.blog_title }}</div>
-                <div class="blog-info"> by {{ blogpost.user.username }}</div>
-            </div>
-            <div class="blog-body">
-                {{ blogpost.post_blog_section[:75] + '...' }}
-            </div>
-            <div class="blog-footer">
-                <div class="blog-actions"></div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="blog-title">{{ blogpost.blog_title }}</div>
+                        <div class="blog-info"> by {{ blogpost.user.username }}</div>
+                    </div>
+                    <div class="blog-body">
+                        {{ blogpost.post_blog_section[:75] + '...' }}
+                    </div>
+                </div>
             </div>
         </div>
         <br>
