@@ -6,9 +6,13 @@
     <div class="card mb-4">
         <div class="card-body">
             <h1>{{blogpost.id}}.{{blogpost.blog_title}}</h1>
-            <p>{{blogpost.post_blog_section}}
+            <p>{{blogpost.post_blog_section|truncate(40)}}...
             </p>
+            <br>
+            <a class="btn btn-primary" href="/viewblogs/{{blogpost.id}}">Read More</a>
+            <br>
             <a href="/comments/{{ blogpost.id }}">view comments/comment on Blog</a>
+
         </div>
     </div>
     {%endfor%}

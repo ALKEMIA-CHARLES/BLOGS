@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+
+    <form method="POST" class="form-group">
+        {{form.hidden_tag()}}
+        {{form.title.label}}{{form.title(class='form-control', value=blog.blog_title)}}
+        {{form.editblog.label}}{{form.editblog(class='form-control', value=blog.post_blog_section)}}
+        <br>
+        {{form.submit(class='btn btn-primary')}}
+    </form>
+</div>
+
+
+{% endblock %}

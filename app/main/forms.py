@@ -27,3 +27,7 @@ class DelComments(FlaskForm):
     id = IntegerField(
         "Please enter the ID number of the comment you would like to delete")
 
+class UpdateBlog(FlaskForm):
+    title = StringField()
+    editblog = TextAreaField("edit blog here")
+    submit = SubmitField("Edit Blog")

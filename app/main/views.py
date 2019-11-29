@@ -1,6 +1,6 @@
 from flask import (render_template, request, redirect, url_for, abort)
 from . import main
-from .forms import AddBlog, DelBlog, CommentsForm
+from .forms import AddBlog, DelBlog, CommentsForm, UpdateBlog
 from ..models import User, Blogpost, Comments
 from flask_login import login_required, current_user
 from .. import db
@@ -77,3 +77,25 @@ def comments(blogpost_id):
     all_comments = Comments.query.filter_by(blogpost_id=blogpost_id).all()
     title = 'blogpost'
     return render_template("comments.html", all_comments=all_comments, title=title, form=form)
+
+
+@main.route("/viewblogs/<int:blogpost_id>")
+def viewblogs(blogpost_id):
+    blog = Blogpost.query.filter_by(id=blogpost_id).first()
+    return render_template("singlepost.html", blog=blog)
+
+
+@main.route("/editblogs/<int:blogpost_id>", methods=['GET', 'POST'])
+def editblogs(blogpost_id):
+    blog = Blogpost.query.filter_by(id=blogpost_id).first()
+    form = UpdateBlog()
+
+    if form.validate_on_submit():
+        blog.blog_title = form.title.data
+        blog.post_blog_section = form.editblog.data
+        db.session.add(blog)
+        db.session.commit()
+        return redirect(url_for('main.viewblogs', blogpost_id=blog.id))
+
+    all_edits = Blogpost.query.filter_by(id=blogpost_id).first()
+    return render_template("editblogs.html", blog=blog, form=form)
