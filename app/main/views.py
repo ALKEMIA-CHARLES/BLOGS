@@ -1,17 +1,15 @@
 from flask import (render_template, request, redirect, url_for, abort)
 from . import main
-from .forms import AddBlog, DelBlog, CommentsForm, UpdateBlog
-from ..models import User, Blogpost, Comments
+from .forms import AddBlog, DelBlog, CommentsForm, UpdateBlog, HomeCommentsForm
+from ..models import User, Blogpost, Comments, HomeComments
 from flask_login import login_required, current_user
 from .. import db
 
 
 @main.route("/")
 def index():
-    # return redirect(url_for('main.add_blog'))
-    blogposts = Blogpost.query.all()[::-1]
 
-    return render_template('home.html', blogposts=blogposts)
+    return render_template('home.html')
 
 
 @main.route("/about")
@@ -102,3 +100,21 @@ def editblogs(blogpost_id):
 
     all_edits = Blogpost.query.filter_by(id=blogpost_id).first()
     return render_template("editblogs.html", blog=blog, form=form)
+
+
+# @main.route("/homecomments/<int:homecomments_id>", methods=['GET', 'POST'])
+# def homecomments(homecomments_id):
+#     comment = HomeComments.query.filter_by(id=homecomments_id).all()
+#     form = HomeCommentsForm()
+
+#     if form.validate_on_submit():
+#         comment.home_comments_title = form.title.data
+#         comment.home_comments_section = form.homecomment.data
+#         db.session.add(comment)
+#         db.session.commit()
+
+#         return redirect(url_for('main.index', homecomments_id=comment.id))
+#         all_home_comments = HomeComments.query.filter_by(
+#             id=homecomments_id).all()
+
+#         return render_template("home.html", comment=comment, form=form)

@@ -39,6 +39,13 @@ class Comments(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     blogpost_id = db.Column(db.Integer, db.ForeignKey('blogpost.id'))
 
+class HomeComments(db.Model):
+
+    __tablename__ = 'homecomments'
+    id = db.Column(db.Integer, primary_key=True)
+    home_comments_title = db.Column(db.String)
+    home_comments_section = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -53,6 +60,7 @@ class User(UserMixin, db.Model):
         "Blogpost", backref="user_blogs", lazy="dynamic")
     comments = db.relationship(
         "Comments", backref="user_comments", lazy="dynamic")
+    home_comments = db.relationship("HomeComments", backref="userhomecomments", lazy ="dynamic" )
 
     @property
     def password(self):
