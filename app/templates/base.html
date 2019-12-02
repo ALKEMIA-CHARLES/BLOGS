@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/styles.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -20,24 +21,27 @@
     </script>
 </head>
 
-<body>
-    <nav class="navbar" style="background-color: black;">
-    <div class="navbar nav">
-        <a class="nav-item nav-link" href="{{url_for('main.index')}}">Home</a>
-        <a class="nav-item nav-link" href="{{url_for('main.about')}}">About us</a>
-        <a class="nav-item nav-link" href="{{url_for('main.add_blog')}}">Add Blog</a>
-        <a class="nav-item nav-link" href="{{url_for('main.del_blog')}}">Delete Blog</a>
-        <a class="nav-item nav-link" href="{{url_for('main.blogs_list')}}">Blogs</a>
-        <div class="collapse navbar-collapse">
+<body style="background-color: darkgoldenrod;">
+    <nav class="navbar" style="background-color: coral">
+        <div class="navbar nav">
+            <a class="nav-item nav-link" href="{{url_for('main.index')}}"
+                style=" font-family: 'Rock Salt', cursive; color: white;">Home</a>
+            <a class="nav-item nav-link" href="{{url_for('main.about')}}"
+                style=" font-family: 'Rock Salt', cursive; color: white;">About us</a>
+            <a class="nav-item nav-link" href="{{url_for('main.add_blog')}}"
+                style=" font-family: 'Rock Salt', cursive; color: white;">Add Blog</a>
+            <a class="nav-item nav-link" href="{{url_for('main.blogs_list')}}"
+                style=" font-family: 'Rock Salt', cursive; color: white;">Blogs</a>
+            <div class="collapse navbar-collapse">
+                {%if current_user.is_authenticated%}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                    {%endif%}
+                </li>
+            </div>
             {%if current_user.is_authenticated%}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"></a>
-                {%endif%}
-            </li>
-        </div>
-            {%if current_user.is_authenticated%}
-            <li class="nav-item dropdown" style="color: blue;">
+            <li class="nav-item dropdown" style=" font-family: 'Rock Salt', cursive; color: white;">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas "></i> Profile </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-info "
@@ -49,11 +53,12 @@
             </li>
             {%else%}
             <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.login')}}">Log In</a>
+                <a class="nav-link" href="{{url_for('auth.login')}}"
+                    style=" font-family: 'Rock Salt', cursive; color: white;">Log In</a>
             </li>
             {%endif%}
-        </ul>
-    </div>
+            </ul>
+        </div>
     </nav>
     {% block content%}
 

@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="jumbotron">
-    <h1> We want people who can express themselves. Show us what you got !</h1>
-    <form method="POST" class="form-group">
+<div class="jumbotron" style="background-color: olive">
+    <h1 style=" font-family: 'Rock Salt', cursive; color: white;"> We want people who can express themselves. Show us
+        what you got !</h1>
+    <form style=" font-family: 'Rock Salt', cursive; color: white;" class="form-group" method="POST">
         {{form.hidden_tag()}}
         {{form.title.label}}{{form.title(class = "form-control")}}
         <br>
         {{form.blogpost.label}}{{form.blogpost(class="form-control")}}
         <br>
-        {{form.submit(class="btn btn-dark btn-block")}}
+        {{form.submit(class="btn btn-block" )}}
     </form>
 </div>
 

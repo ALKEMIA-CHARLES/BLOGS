@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <h1>These are all the blogs who have created</h1>
+    <h1 style=" font-family: 'Rock Salt', cursive; color: white;">These are all the blogs who have created</h1>
     {%for blogpost in blogposts%}
-    <div class="card mb-4">
-        <div class="card-body">
+    <div class="card mb-4" style=" font-family: 'Rock Salt', cursive; color: white;">
+        <div class="card-body" style="background-color: coral;">
             <h1>{{loop.index}}.{{blogpost.blog_title}}</h1>
             <p>{{blogpost.post_blog_section|truncate(40)}}...
             </p>
             <br>
-            <a class="btn btn-primary" href="/viewblogs/{{blogpost.id}}">Read More</a>
+            <a class="btn btn-primary" href="/viewblogs/{{blogpost.id}}" style="background-color: gray;">Read More</a>
+            <a class="btn btn-primary" href="/delete/{{blogpost.id}}" style="background-color: gray;">Delete</a>
             <br>
-            <a href="/comments/{{ blogpost.id }}">view comments/comment on Blog</a>
+            <a href="/comments/{{ blogpost.id }}" style="color: gray;">view comments/comment on Blog</a>
 
         </div>
     </div>

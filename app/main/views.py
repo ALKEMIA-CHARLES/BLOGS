@@ -9,7 +9,9 @@ from .. import db
 @main.route("/")
 def index():
 
-    return render_template('home.html')
+    blogposts = Blogpost.query.filter_by().all()
+
+    return render_template('home.html', blogposts=blogposts)
 
 
 @main.route("/about")
@@ -35,23 +37,26 @@ def add_blog():
     return render_template('add.html', form=form)
 
 
-@main.route("/delete", methods=["GET", "POST"])
+@main.route("/delete/<blog_id>", methods=["GET", "POST"])
 @login_required
-def del_blog():
-    form = DelBlog()
+def del_blog(blog_id):
 
-    if form.validate_on_submit():
+    blog = Blogpost.query.filter_by(id=blog_id).first()
+    db.session.delete(blog)
+    db.session.commit()
 
-        id = form.id.data
-        blog = Blogpost.query.get(id)
-        db.session.delete(blog)
-        db.session.commit()
+    return redirect(url_for('main.blogs_list'))
 
-        return redirect(url_for('main.blogs_list'))
 
-    return render_template('delete.html', form=form)
-    # Blogpost.ob
-    # pass
+@main.route("/deletecomment/<int:blog_id>/<int:comments_id>", methods=["GET", "POST"])
+@login_required
+def del_comment(blog_id, comments_id):
+
+    comments = Comments.query.filter_by(id=comments_id).first()
+    db.session.delete(comments)
+    db.session.commit()
+
+    return redirect(url_for('main.comments', blogpost_id=blog_id))
 
 
 @main.route('/blogs')
@@ -70,14 +75,14 @@ def comments(blogpost_id):
     if form.validate_on_submit():
         comment = form.comment.data
 
-        new_comment = Comments(comment_section=comment,
+        new_comment = Comments(comments_section=comment,
                                user_id=current_user.id, blogpost_id=blogpost_id)
         db.session.add(new_comment)
         db.session.commit()
 
     all_comments = Comments.query.filter_by(blogpost_id=blogpost_id).all()
     title = 'blogpost'
-    return render_template("comments.html", all_comments=all_comments, title=title, form=form)
+    return render_template("comments.html", all_comments=all_comments, title=title, form=form, blogpost_id=blogpost_id)
 
 
 @main.route("/viewblogs/<int:blogpost_id>")

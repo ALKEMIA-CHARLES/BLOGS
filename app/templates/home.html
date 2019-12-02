@@ -1,19 +1,23 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<div class="container">
+<div class="container" style="background-color: darkkhaki;">
     <div class="blogs">
         {% if current_user.is_authenticated %}
         {% for blogpost in blogposts %}
         <div class="blog">
             <div class="blog-header">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="blog-title">{{ blogpost.blog_title }}</div>
-                        <div class="blog-info"> by {{ blogpost.user.username }}</div>
-                    </div>
-                    <div class="blog-body">
-                        {{ blogpost.post_blog_section[:75] + '...' }}
+                <div class="jumbotron" style="background-color:olive">
+                    <div class="card mb-4">
+                        <div class="card-body" style="background-color: coral;">
+                            <div class="blog-title" style="font-family: 'Rock Salt', cursive; color: white;">
+                                {{ blogpost.blog_title }}</div>
+                            <div class="blog-info" style="font-family: 'Rock Salt' , cursive; color: white;"> by
+                                {{ blogpost.user.username }}</div>
+                        </div>
+                        <div class="blog-body" style="font-family: 'Rock Salt' , cursive; color: white; background-color: coral;">
+                            {{ blogpost.post_blog_section[:75] + '...' }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,127 +25,161 @@
         <br>
         {% endfor %}
         {% else %}
-        <div class="container">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h1>Tesla CyberTruck</h1>
-                    <p> The Cybertruck has arrived and it looks nothing like any pickup truck you've ever seen. Tesla
-                        CEO Elon Musk revealed the long-awaited electric pickup truck at its Design Studio in
-                        Hawthorne, California, just outside Los Angeles.
+        <div class="container" style="background-color:mediumaquamarine">
+            <div class="jumbotron" style="background-color: olive;">
+                <div class="card mb-4" style="background-color: coral;">
+                    <div class="card-body">
+                        <h style=" font-family: 'Rock Salt', cursive; color: white;">Tesla CyberTruck</h1>
+                            <p> The Cybertruck has arrived and it looks nothing like any pickup truck you've ever seen.
+                                Tesla
+                                CEO Elon Musk revealed the long-awaited electric pickup truck at its Design Studio in
+                                Hawthorne, California, just outside Los Angeles.
 
-                        When the truck initially drove onto the stage, many in the crowd clearly couldn't believe that
-                        this was actually the vehicle they'd come to see. The Cybertruck looks like a large metal
-                        trapezoid on wheels, more like an art piece than a truck.
-                        The most expensive version of the truck, the Tri Motor All-Wheel-Drive, will be able to carry
-                        3,500 pounds, tow up to 14,000 pounds and go from zero to 60 in 2.9 seconds. It will also be
-                        able to drive up to 500 miles on a full charge. Base models will have a range of 250 miles.
-                        In addition to being able to carry cargo in its bed, the truck will have lockable storage
-                        spaces under the hood and in the sides. The bed itself also has a sliding cover. Drivers will
-                        also be able to adjust the ride height of the truck, for when they are on the highway or
-                        off-road, using an adaptive air suspension system.
-                    </p>
-                    <div id="comment-section">
-                        <h3>Leaving a comment ?</h3>
-                        <form method="POST" class="form-group">
-                            <br>
-                        <label for="comment" class="required" >Your message ?</label>
-                        <br>
-                        <textarea name="comment" id="comment " rows="5" cols="80" tabindex="4" required="required"></textarea>
-                        <br>
-                        <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-                        <input name="submit" type="submit" value="Submit comment" />
-                        </form>
+                                When the truck initially drove onto the stage, many in the crowd clearly couldn't
+                                believe that
+                                this was actually the vehicle they'd come to see. The Cybertruck looks like a large
+                                metal
+                                trapezoid on wheels, more like an art piece than a truck.
+                                The most expensive version of the truck, the Tri Motor All-Wheel-Drive, will be able to
+                                carry
+                                3,500 pounds, tow up to 14,000 pounds and go from zero to 60 in 2.9 seconds. It will
+                                also be
+                                able to drive up to 500 miles on a full charge. Base models will have a range of 250
+                                miles.
+                                In addition to being able to carry cargo in its bed, the truck will have lockable
+                                storage
+                                spaces under the hood and in the sides. The bed itself also has a sliding cover. Drivers
+                                will
+                                also be able to adjust the ride height of the truck, for when they are on the highway or
+                                off-road, using an adaptive air suspension system.
+                            </p>
+                            <div id="comment-section">
+                                <h3 style=" font-family: 'Rock Salt', cursive; color: white;">Leaving a comment ?</h3>
+                                <form method="POST" class="form-group" action="/">
+                                    <br>
+                                    <label for="comment" class="required">Your message ?</label>
+                                    <br>
+                                    <textarea name="comment" id="comment " rows="5" cols="80" tabindex="4"
+                                        required="required"></textarea>
+                                    <br>
+                                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                                    <input name="submit" type="submit" value="Submit comment" />
+                                </form>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h1>HIV AIDS</h1>
-                    <p> Human immunodeficiency virus (HIV) is a virus that attacks immune cells called CD4 cells, which
-                        are a type of T cell.
+        <div class="container" style="background-color:mediumaquamarine">
+            <div class="jumbotron" style="background-color: olive;">
+                <div class="card mb-4" style="background-color: coral; ">
+                    <div class="card-body">
+                        <h1 style=" font-family: 'Rock Salt', cursive; color: white;">HIV AIDS</h1>
+                        <p style=" font-family: 'Rock Salt', cursive; color: white;"> Human immunodeficiency virus (HIV)
+                            is a virus that attacks immune cells called CD4 cells,
+                            which
+                            are a type of T cell.
 
-                        These are white blood cells that move around the body, detecting faults and anomalies in cells
-                        as well as infections. When HIV targets and infiltrates these cells, it reduces the body's
-                        ability to combat other diseases.
+                            These are white blood cells that move around the body, detecting faults and anomalies in
+                            cells
+                            as well as infections. When HIV targets and infiltrates these cells, it reduces the body's
+                            ability to combat other diseases.
 
-                        This increases the risk and impact of opportunistic infections and cancers. However, a person
-                        can carry HIV without experiencing symptoms for a long time.
+                            This increases the risk and impact of opportunistic infections and cancers. However, a
+                            person
+                            can carry HIV without experiencing symptoms for a long time.
 
-                        HIV is a lifelong infection. However, receiving treatment and managing the disease effectively
-                        can prevent HIV from reaching a severe level and reduce the risk of a person passing on the
-                        virus.
-                        AIDS is the most advanced stage of HIV infection. Once HIV infection develops into AIDS,
-                        infections and cancer pose a greater risk.
+                            HIV is a lifelong infection. However, receiving treatment and managing the disease
+                            effectively
+                            can prevent HIV from reaching a severe level and reduce the risk of a person passing on the
+                            virus.
+                            AIDS is the most advanced stage of HIV infection. Once HIV infection develops into AIDS,
+                            infections and cancer pose a greater risk.
 
-                        Without treatment, HIV infection is likely to develop into AIDS as the immune system gradually
-                        wears down. However, advances in ART mean than an ever-decreasing number of people progress to
-                        this stage.
+                            Without treatment, HIV infection is likely to develop into AIDS as the immune system
+                            gradually
+                            wears down. However, advances in ART mean than an ever-decreasing number of people progress
+                            to
+                            this stage.
 
-                        By the close of 2015, around 1,122,900 people were HIV-positive. To compare, figures from 2016
-                        show that medical professionals diagnosed AIDS in an estimated 18,160 people.
-                    </p>
-                    <div id="comment-section">
-                        <h3>Leaving a comment ?</h3>
-                        <form form action="post_comment" method="POST">
-                            <br>
-                            <label for="comment" class="required">Your message ?</label>
-                            <br>
-                            <textarea name="comment" id="comment " rows="5" cols="80" tabindex="4"
-                                required="required"></textarea>
-                            <br>
-                            <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-                            <input name="submit" type="submit" value="Submit comment" />
-                        </form>
+                            By the close of 2015, around 1,122,900 people were HIV-positive. To compare, figures from
+                            2016
+                            show that medical professionals diagnosed AIDS in an estimated 18,160 people.
+                        </p>
+                        <div id="comment-section">
+                            <h3 style=" font-family: 'Rock Salt', cursive; color: white;">Leaving a comment ?</h3>
+                            <form method="POST" class="form-group">
+                                <br>
+                                <label for="comment" class="required"
+                                    style=" font-family: 'Rock Salt', cursive; color: white;">Your message ?</label>
+                                <br>
+                                <textarea name="comment" id="comment " rows="5" cols="80" tabindex="4"
+                                    required="required"></textarea>
+                                <br>
+                                <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                                <input name="submit" type="submit" value="Submit comment" />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <H1>Liverpool grind out another win as belief in Jurgen Klopp's men
-                        grows
-                    </H1>
-                    <p> Jurgen Klopp grinned, his bright white teeth gleaming under the floodlights as he walked off the
-                        Anfield pitch thumping
-                        the badge on his chest and soaking up the adulation of the fans in the stands. This was not a
-                        vintage Liverpool
-                        performance, but it was a vital win and he knew it.
+        <div class="container" style="background-color:mediumaquamarine">
+            <div class="jumbotron" style="background-color: olive
+            ">
+                <div class="card mb-4" style="background-color: coral">
+                    <div class="card-body">
+                        <H1 style=" font-family: 'Rock Salt', cursive; color: white;">Liverpool grind out another win as
+                            belief in Jurgen Klopp's men
+                            grows
+                        </H1>
+                        <p style=" font-family: 'Rock Salt', cursive; color: white;"> Jurgen Klopp grinned, his bright
+                            white teeth gleaming under the floodlights as he walked off
+                            the
+                            Anfield pitch thumping
+                            the badge on his chest and soaking up the adulation of the fans in the stands. This was not
+                            a
+                            vintage Liverpool
+                            performance, but it was a vital win and he knew it.
 
-                        A couple of hours earlier, news of Jonjo Shelvey's late equaliser for Newcastle against
-                        Manchester City had spread
-                        across the stadium. Liverpool knew victory here would take them 11 points clear of their rivals.
-                        It was an opportunity
-                        they were not expecting but one they had to take.
-                        Virgil van Dijk's goals - two headers from Trent Alexander-Arnold deliveries in the space of six
-                        first-half minutes -
-                        put them in a commanding position, a position from which it seemed they might run wild. But
-                        Brighton refused to lie
-                        down. When Alisson Becker was sent off and Lewis Dunk guided the resulting free-kick past
-                        Adrian, it felt like Liverpool
-                        might crumble.
-                        According to Opta, Liverpool have now scored 40 goals from set pieces since the start of last
-                        season. It is more than
-                        any other side in the Premier League. Van Dijk's towering frame can be impossible to defend
-                        against and he is not their
-                        only threat either. In the same time-frame, they have scored 29 headed goals. No other Premier
-                        League side has managed
-                        more than 19.
-                    </p>
-                    <div id="comment-section">
-                        <h3>Leaving a comment ?</h3>
-                        <form form action="post_comment" method="POST">
-                            <br>
-                            <label for="comment" class="required">Your message ?</label>
-                            <br>
-                            <textarea name="comment" id="comment " rows="5" cols="80" tabindex="4"
-                                required="required"></textarea>
-                            <br>
-                            <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-                            <input name="submit" type="submit" value="Submit comment" />
-                        </form>
+                            A couple of hours earlier, news of Jonjo Shelvey's late equaliser for Newcastle against
+                            Manchester City had spread
+                            across the stadium. Liverpool knew victory here would take them 11 points clear of their
+                            rivals.
+                            It was an opportunity
+                            they were not expecting but one they had to take.
+                            Virgil van Dijk's goals - two headers from Trent Alexander-Arnold deliveries in the space of
+                            six
+                            first-half minutes -
+                            put them in a commanding position, a position from which it seemed they might run wild. But
+                            Brighton refused to lie
+                            down. When Alisson Becker was sent off and Lewis Dunk guided the resulting free-kick past
+                            Adrian, it felt like Liverpool
+                            might crumble.
+                            According to Opta, Liverpool have now scored 40 goals from set pieces since the start of
+                            last
+                            season. It is more than
+                            any other side in the Premier League. Van Dijk's towering frame can be impossible to defend
+                            against and he is not their
+                            only threat either. In the same time-frame, they have scored 29 headed goals. No other
+                            Premier
+                            League side has managed
+                            more than 19.
+                        </p>
+                        <div id="comment-section">
+                            <h3 style=" font-family: 'Rock Salt', cursive; color: white;">Leaving a comment ?</h3>
+                            <form method="POST" class="form-group">
+                                <br>
+                                <label for="comment" class="required"
+                                    style=" font-family: 'Rock Salt', cursive; color: white;">Your message ?</label>
+                                <br>
+                                <textarea name="comment" id="comment " rows="5" cols="80" tabindex="4"
+                                    required="required"></textarea>
+                                <br>
+                                <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                                <input name="submit" type="submit" value="Submit comment" />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-color: darkolivegreen">
 
-    <form method="POST" class="form-group">
+    <form method="POST" class="form-group" style="font-family:  'Rock Salt', cursive; color: white;;">
         {{form.hidden_tag()}}
         {{form.title.label}}{{form.title(class='form-control', value=blog.blog_title)}}
         {{form.editblog.label}}{{form.editblog(class='form-control', value=blog.post_blog_section)}}

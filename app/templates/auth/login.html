@@ -13,12 +13,14 @@
                 {{message}}
             </div>
             {%endfor%}
-            <form class="border border-light p-5 my-2" method="POST">
-                <p class="h4 mb-4 text-center ">Sign in</p>
+            <form class="border p-5 my-2" style=" font-family: 'Rock Salt', cursive; color: white;"
+                method="POST">
+                <p class="h4 text-center " style=" font-family: 'Rock Salt', cursive; color: white;">Sign in</p>
                 {{wtf.quick_form(login_form)}}
                 <div class="text-center">
-                    <p>Not a member?
-                        <a href="{{url_for('auth.register')}}">Sign Up</a>
+                    <p style=" font-family: 'Rock Salt', cursive; color: white;">Not a member?
+                        <a href="{{url_for('auth.register')}}"
+                            style=" font-family: 'Rock Salt', cursive; color: white;">Sign Up</a>
                     </p>
                 </div>
             </form>

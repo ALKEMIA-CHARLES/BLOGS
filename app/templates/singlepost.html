@@ -2,13 +2,14 @@
 {% block content %}
 
 <div class="container">
-    <div class="jumbotron">
-        <h1>{{blog.blog_title}}</h1>
+    <div class="jumbotron" style="background-color: darkkhaki; font-family:  'Rock Salt', cursive; color: white;">
+        <h1 style=" font-family:  'Rock Salt', cursive; color: white;  ">{{blog.blog_title}}</h1>
     </div>
 
     <hr>
-    <p>{{blog.post_blog_section}}</p>
-    <a href="/editblogs/{{blog.id}}" method=post class="btn btn-link">Edit</a>
+    <p style="font-family:'Rock Salt', cursive; color: white;">{{blog.post_blog_section}}</p>
+    <a href="/editblogs/{{blog.id}}" method=post class="btn btn-link"
+        style="font-family:  'Rock Salt', cursive; color: white;;">Edit</a>
 </div>
 
 {% endblock %}

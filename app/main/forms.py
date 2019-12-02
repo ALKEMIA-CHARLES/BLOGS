@@ -32,6 +32,5 @@ class UpdateBlog(FlaskForm):
     editblog = TextAreaField("edit blog here")
     submit = SubmitField("Edit Blog")
 class HomeCommentsForm(FlaskForm):
-    title = StringField()
     homecomment = TextAreaField("I know your brave enough")
     submit = SubmitField("Post Comment")

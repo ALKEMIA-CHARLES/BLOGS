@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-color: darkolivegreen;">
 
-    <form method="POST">
+    <form style="font-family: 'Rock Salt', cursive; color: white; " method="POST">
         {{form.hidden_tag()}}
         {{form.comment.label}}
         <div style="display: flex;">
@@ -12,7 +12,12 @@
         </div>
     </form>
     {% for comment in all_comments %}
-    <li>{{comment.comment_section}}</li>
+    <li style="font-family:  'Rock Salt', cursive; color: white;  ">
+        {{comment.comments_section}}
+        <a class="btn btn-primary" href="/deletecomment/{{blogpost_id}}/{{comment.id}}"
+            style="background-color: gray;">Delete</a>
+    </li>
+
     {% endfor %}
 
 </div>
